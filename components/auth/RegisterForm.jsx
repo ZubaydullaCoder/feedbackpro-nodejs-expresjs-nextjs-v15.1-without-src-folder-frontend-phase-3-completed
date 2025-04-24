@@ -68,12 +68,16 @@ export default function RegisterForm() {
             <FormItem>
               <FormLabel>Email address</FormLabel>
               <FormControl>
-                <Input
-                  type="email"
-                  placeholder="you@example.com"
-                  {...field}
-                  disabled={isLoading}
-                />
+                <div className="relative">
+                  <Icons.mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+                  <Input
+                    type="email"
+                    placeholder="you@example.com"
+                    {...field}
+                    className="pl-9"
+                    disabled={isLoading}
+                  />
+                </div>
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -88,9 +92,11 @@ export default function RegisterForm() {
               <FormLabel>Password</FormLabel>
               <FormControl>
                 <div className="relative">
+                  <Icons.lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
                   <Input
                     type={isPasswordVisible ? "text" : "password"}
                     {...field}
+                    className="pl-9"
                     disabled={isLoading}
                   />
                   <button
@@ -118,11 +124,15 @@ export default function RegisterForm() {
             <FormItem>
               <FormLabel>Business name</FormLabel>
               <FormControl>
-                <Input
-                  placeholder="Your Business Name"
-                  {...field}
-                  disabled={isLoading}
-                />
+                <div className="relative">
+                  <Icons.business className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+                  <Input
+                    placeholder="Your Business Name"
+                    {...field}
+                    className="pl-9"
+                    disabled={isLoading}
+                  />
+                </div>
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -136,11 +146,15 @@ export default function RegisterForm() {
             <FormItem>
               <FormLabel>Business description (optional)</FormLabel>
               <FormControl>
-                <Input
-                  placeholder="Brief description of your business"
-                  {...field}
-                  disabled={isLoading}
-                />
+                <div className="relative">
+                  <Icons.description className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+                  <Input
+                    placeholder="Brief description of your business"
+                    {...field}
+                    className="pl-9"
+                    disabled={isLoading}
+                  />
+                </div>
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -148,7 +162,11 @@ export default function RegisterForm() {
         />
 
         <Button type="submit" className="w-full" disabled={isLoading}>
-          {isLoading && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
+          {isLoading ? (
+            <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+          ) : (
+            <Icons.register className="mr-2 h-4 w-4" />
+          )}
           Create account
         </Button>
       </form>
